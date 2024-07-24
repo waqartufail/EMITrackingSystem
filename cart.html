@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="css/inventory.css" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">Product Allocation</div>
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span class="menu-item">Dashboard</span></a>
+            <a href="inventory.html"><i class="fas fa-box"></i> <span class="menu-item">Inventory</span></a>
+            <a href="categories.html" ><i class="fas fa-tags"></i> <span class="menu-item">Categories</span></a>
+            <a href="#"class="active"><i class="fas fa-shopping-cart"></i> <span class="menu-item">Cart</span></a>
+            <a href="payment.html"><i class="fas fa-chart-line"></i> <span class="menu-item">Sales</span></a>
+            <a href="profile.html"><i class="fas fa-user"></i> <span class="menu-item">Profile</span></a>
+        </div>
+        <div>
+            <a href="inventory.html"><i class="fas fa-plus"></i> <span class="menu-item">Add Item</span></a>
+            <a href="thankyou.html"><i class="fas fa-sign-out-alt"></i> <span class="menu-item">Sign Out</span></a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <a href="dashboard.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+            <div class="search-bar">
+                <input type="text" id="category-search" placeholder="Search Applicant">
+            </div>
+            <div class="user-info">
+                <button class="btn btn-primary-custom btn-custom" data-toggle="modal" data-target="#allocateProductModal">Allocate Product</button>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-envelope"></i>
+                <img src="https://via.placeholder.com/40" alt="User">
+            </div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">Allocated Products</div>
+                <!-- Allocated Products Table -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Applicant Name</th>
+								<th>Product Name</th>
+                                <th>Product Total Amount</th>
+                                <th>Advance</th>
+                                <th>Tenure</th>
+                                <th>Installment</th>
+                                <th>Total Paid</th>
+                                <th>Balance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allocated-products">
+                            <tr>
+								<td><a href="#" class="applicant-link" data-toggle="modal" data-target="#applicantDetailsModal">Applicant 1</a></td>
+                                <td>Product 1</td>
+                                <td>$1000</td>
+                                <td>$100</td>
+                                <td>12</td>
+                                <td>$75</td>
+                                <td>$100</td>
+                                <td>$900</td>
+                                <td>
+									<button class="btn btn-primary btn-edit-profile edit-button" ><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile delete-button"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+								<td><a href="#" class="applicant-link" data-toggle="modal" data-target="#applicantDetailsModal">Applicant 2</a></td>
+                                <td>Product 2</td>
+                                <td>$1500</td>
+                                <td>$200</td>
+                                <td>24</td>
+                                <td>$65</td>
+                                <td>$200</td>
+                                <td>$1300</td>
+                                <td>
+                                    <button class="btn btn-primary btn-edit-profile edit-button" ><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile delete-button"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+								<td><a href="#" class="applicant-link" data-toggle="modal" data-target="#applicantDetailsModal">Applicant 3</a></td>
+                                <td>Product 3</td>
+                                <td>$2000</td>
+                                <td>$300</td>
+                                <td>36</td>
+                                <td>$47.22</td>
+                                <td>$300</td>
+                                <td>$1700</td>
+                                <td>
+                                    <button class="btn btn-primary btn-edit-profile edit-button" ><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile delete-button"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9" class="table-footer">
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        </ul>
+                                    </nav>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal for Applicant Details -->
+    <div class="modal fade" id="applicantDetailsModal" tabindex="-1" aria-labelledby="applicantDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="applicantDetailsModalLabel">Applicant Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="applicant-details">
+                        <!-- Applicant Details Content -->
+                        <p><strong>Product Total:</strong> <span id="product-total-modal"></span></p>
+                        <p><strong>Advance Paid:</strong> <span id="advance-paid-modal"></span></p>
+                        <p><strong>Installments:</strong></p>
+                        <table class="table installments-table">
+                            <thead>
+                                <tr>
+                                    <th>Installment Number</th>
+                                    <th>Due Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="installments-details">
+                                <!-- Installments Details Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for Allocating Product -->
+    <div class="modal fade" id="allocateProductModal" tabindex="-1" aria-labelledby="allocateProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="allocateProductModalLabel">Allocate Product to Applicant</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="allocate-product-form">
+                        <input type="hidden" id="edit-index" value="">
+                        <div class="form-group">
+                            <label for="product-name">Product Name</label>
+                            <select class="form-control" id="product-name">
+                                <option value="Product 1">Product 1</option>
+                                <option value="Product 2">Product 2</option>
+                                <option value="Product 3">Product 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicant-name">Applicant Name</label>
+                            <input type="text" class="form-control" id="applicant-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="product-total-amount">Product Total Amount</label>
+                            <input type="number" class="form-control" id="product-total-amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="advance">Advance</label>
+                            <input type="number" class="form-control" id="advance">
+                        </div>
+                        <div class="form-group">
+                            <label for="tenure">Tenure</label>
+                            <input type="number" class="form-control" id="tenure">
+                        </div>
+                        <div class="form-group">
+                            <label for="installment">Installment</label>
+                            <input type="number" class="form-control" id="installment" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="total-paid">Total Paid</label>
+                            <input type="number" class="form-control" id="total-paid">
+                        </div>
+                        <div class="form-group">
+                            <label for="balance">Balance</label>
+                            <input type="number" class="form-control" id="balance" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom btn-custom">Allocate</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to reset form
+            function resetForm() {
+                $('#allocate-product-form')[0].reset();
+                $('#edit-index').val('');
+                $('#installment').val('');
+                $('#balance').val('');
+                $('#total-paid').prop('readonly', false);
+            }
+
+            // Form submission handler
+            $('#allocate-product-form').on('submit', function(event) {
+                event.preventDefault();
+
+                const productName = $('#product-name').val();
+                const applicantName = $('#applicant-name').val();
+                const productTotalAmount = parseFloat($('#product-total-amount').val());
+                const advance = parseFloat($('#advance').val());
+                const tenure = parseFloat($('#tenure').val());
+                const installment = (productTotalAmount - advance) / tenure;
+                const totalPaid = parseFloat($('#total-paid').val()) || 0;
+                const balance = productTotalAmount - (advance + totalPaid);
+                const editIndex = $('#edit-index').val();
+
+                $('#installment').val(installment.toFixed(2));
+                $('#balance').val(balance.toFixed(2));
+
+                if (editIndex) {
+                    // Edit existing row
+                    const row = $('#allocated-products tr').eq(editIndex);
+                    row.find('td').eq(0).text(productName);
+                    row.find('td').eq(1).text(applicantName);
+                    row.find('td').eq(2).text(`$${productTotalAmount.toFixed(2)}`);
+                    row.find('td').eq(3).text(`$${advance.toFixed(2)}`);
+                    row.find('td').eq(4).text(tenure);
+                    row.find('td').eq(5).text(`$${installment.toFixed(2)}`);
+                    row.find('td').eq(6).text(`$${totalPaid.toFixed(2)}`);
+                    row.find('td').eq(7).text(`$${balance.toFixed(2)}`);
+                } else {
+                    // Add new row
+                    $('#allocated-products').append(`
+                        <tr>
+                            <td>${productName}</td>
+                            <td>${applicantName}</td>
+                            <td>$${productTotalAmount.toFixed(2)}</td>
+                            <td>$${advance.toFixed(2)}</td>
+                            <td>${tenure}</td>
+                            <td>$${installment.toFixed(2)}</td>
+                            <td>$${totalPaid.toFixed(2)}</td>
+                            <td>$${balance.toFixed(2)}</td>
+                            <td>
+                                <button class="btn btn-secondary-custom btn-custom edit-button">Edit</button>
+                                <button class="btn btn-secondary-custom btn-custom delete-button">Delete</button>
+                            </td>
+                        </tr>
+                    `);
+                }
+
+                $('#allocateProductModal').modal('hide');
+                resetForm();
+            });
+
+            // Edit button click handler
+            $('#allocated-products').on('click', '.edit-button', function() {
+                const row = $(this).closest('tr');
+                const index = row.index();
+
+                $('#edit-index').val(index);
+                $('#product-name').val(row.find('td').eq(0).text());
+                $('#applicant-name').val(row.find('td').eq(1).text());
+                $('#product-total-amount').val(parseFloat(row.find('td').eq(2).text().substring(1)));
+                $('#advance').val(parseFloat(row.find('td').eq(3).text().substring(1)));
+                $('#tenure').val(row.find('td').eq(4).text());
+                $('#installment').val(parseFloat(row.find('td').eq(5).text().substring(1)));
+                $('#total-paid').val(parseFloat(row.find('td').eq(6).text().substring(1)));
+                $('#balance').val(parseFloat(row.find('td').eq(7).text().substring(1)));
+                $('#total-paid').prop('readonly', true);
+
+                $('#allocateProductModal').modal('show');
+            });
+
+            // Delete button click handler
+            $('#allocated-products').on('click', '.delete-button', function() {
+                $(this).closest('tr').remove();
+            });
+
+            
+		
+		// Applicant link click handler
+            $('#allocated-products').on('click', '.applicant-link', function(e) {
+                e.preventDefault();
+                const row = $(this).closest('tr');
+                const productTotalAmount = parseFloat(row.find('td').eq(2).text().substring(1));
+                const advance = parseFloat(row.find('td').eq(3).text().substring(1));
+                const installments = [
+                    { number: 1, dueDate: '2024-07-01', amount: 75, status: 'To Be Paid' },
+                    { number: 2, dueDate: '2024-08-01', amount: 75, status: 'Paid' },
+                    // Add more installment details as needed
+                ];
+
+                $('#applicant-details').find('#product-total-modal').text(`$${productTotalAmount.toFixed(2)}`);
+                $('#applicant-details').find('#advance-paid-modal').text(`$${advance.toFixed(2)}`);
+
+                $('#installments-details').empty();
+                installments.forEach(installment => {
+                    $('#installments-details').append(`
+                        <tr>
+                            <td>${installment.number}</td>
+                            <td>${installment.dueDate}</td>
+                            <td>$${installment.amount.toFixed(2)}</td>
+                            <td>${installment.status}</td>
+                        </tr>
+                    `);
+                });
+
+                $('#applicantDetailsModal').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

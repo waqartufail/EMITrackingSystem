@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+	<link href="css/inventory.css" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">Profile</div>
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span class="menu-item">Dashboard</span></a>
+            <a href="inventory.html"><i class="fas fa-box"></i> <span class="menu-item">Inventory</span></a>
+            <a href="categories.html"><i class="fas fa-tags"></i> <span class="menu-item">Categories</span></a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> <span class="menu-item">Cart</span></a>
+            <a href="payment.html"><i class="fas fa-chart-line"></i> <span class="menu-item">Sales</span></a>
+            <a href="#" class="active"><i class="fas fa-user"></i> <span class="menu-item">Profile</span></a>
+        </div>
+        <div>
+            <a href="inventory.html" data-toggle="modal" data-target="#addProfileModal"><i class="fas fa-plus"></i> <span class="menu-item">Add Profile</span></a>
+            <a href="thankyou.html"><i class="fas fa-sign-out-alt"></i> <span class="menu-item">Sign Out</span></a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <a href="dashboard.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+            <div class="search-bar">
+                <input type="text" id="profile-search" placeholder="Search profile">
+            </div>
+            <div class="user-info">
+                <button class="btn btn-primary-custom btn-custom" data-toggle="modal" data-target="#addProfileModal">Add New Profile</button>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-envelope"></i>
+                <img src="https://via.placeholder.com/40" alt="User">
+            </div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">Profiles</div>
+                <!-- Profiles Table -->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Applicant Name</th>
+                                <th>CNIC No</th>
+                                <th>Phone No</th>
+                                <th>Status</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="profile-row">
+                                <td><a href="#" class="profile-name" data-toggle="modal" data-target="#viewProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'>John Doe</a></td>
+                                <td>12345-6789012-3</td>
+                                <td>123-456-7890</td>
+                                <td>Approved</td>
+                                <td>1123 Main St, City</td>
+                                <td>
+                                    <button class="btn btn-primary btn-edit-profile" data-toggle="modal" data-target="#editProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'><i class="fas fa-trash"></i></button>
+									<button class="btn btn-success btn-approve-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'>Approve</button>
+                                </td>
+                            </tr>
+							<tr class="profile-row">
+                                <td><a href="#" class="profile-name" data-toggle="modal" data-target="#viewProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'>John Doe</a></td>
+                                <td>12345-6789012-3</td>
+                                <td>123-456-7890</td>
+                                <td>Pending</td>
+                                <td>1123 Main St, City</td>
+                                <td>
+                                    <button class="btn btn-primary btn-edit-profile" data-toggle="modal" data-target="#editProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'><i class="fas fa-trash"></i></button>
+									<button class="btn btn-success btn-approve-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'>Approve</button>
+                                </td>
+                            </tr>
+							<tr class="profile-row">
+                                <td><a href="#" class="profile-name" data-toggle="modal" data-target="#viewProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'>John Doe</a></td>
+                                <td>12345-6789012-3</td>
+                                <td>123-456-7890</td>
+                                <td>Rejected</td>
+                                <td>1123 Main St, City</td>
+                                <td>
+                                    <button class="btn btn-primary btn-edit-profile" data-toggle="modal" data-target="#editProfileModal" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890", "status": "Approved", "address": "1123 Main St, City", "guarantor1": {"name": "Jane Doe", "cnic": "12345-6789012-4", "phone": "123-456-7891"}, "guarantor2": {"name": "Jim Doe", "cnic": "12345-6789012-5", "phone": "123-456-7892"}}'><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger btn-delete-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'><i class="fas fa-trash"></i></button>
+									<button class="btn btn-success btn-approve-profile" data-profile='{"name": "John Doe", "cnic": "12345-6789012-3", "phone": "123-456-7890"}'>Approve</button>
+                                </td>
+                            </tr>
+                            <!-- Add more profiles as needed -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Profile Modal -->
+    <div class="modal fade" id="addProfileModal" tabindex="-1" role="dialog" aria-labelledby="addProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProfileModalLabel">Add New Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProfileForm">
+                        <div class="edit-form">
+                            <h5>Applicant</h5>
+                            <div class="form-group">
+                                <label for="applicantName">Name</label>
+                                <input type="text" class="form-control" id="applicantName" name="applicantName">
+                            </div>
+                            <div class="form-group">
+                                <label for="applicantCnic">CNIC No</label>
+                                <input type="text" class="form-control" id="applicantCnic" name="applicantCnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="applicantPhone">Phone No</label>
+                                <input type="text" class="form-control" id="applicantPhone" name="applicantPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="applicantStatus">Status</label>
+                                <select class="form-control" id="applicantStatus" name="applicantStatus">
+                                    <option value="Approved">Approved</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="applicantAddress">Address</label>
+                                <input type="text" class="form-control" id="applicantAddress" name="applicantAddress">
+                            </div>
+                        </div>
+                        <div class="edit-form">
+                            <h5>Guarantor 1</h5>
+                            <div class="form-group">
+                                <label for="guarantor1Name">Name</label>
+                                <input type="text" class="form-control" id="guarantor1Name" name="guarantor1Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="guarantor1Cnic">CNIC No</label>
+                                <input type="text" class="form-control" id="guarantor1Cnic" name="guarantor1Cnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="guarantor1Phone">Phone No</label>
+                                <input type="text" class="form-control" id="guarantor1Phone" name="guarantor1Phone">
+                            </div>
+                        </div>
+                        <div class="edit-form">
+                            <h5>Guarantor 2</h5>
+                            <div class="form-group">
+                                <label for="guarantor2Name">Name</label>
+                                <input type="text" class="form-control" id="guarantor2Name" name="guarantor2Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="guarantor2Cnic">CNIC No</label>
+                                <input type="text" class="form-control" id="guarantor2Cnic" name="guarantor2Cnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="guarantor2Phone">Phone No</label>
+                                <input type="text" class="form-control" id="guarantor2Phone" name="guarantor2Phone">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveProfileButton">Save Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Profile Modal -->
+    <div class="modal fade" id="viewProfileModal" tabindex="-1" role="dialog" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewProfileModalLabel">View Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="viewApplicant">
+                        <h5>Applicant</h5>
+                        <p><strong>Name: </strong><span id="viewApplicantName"></span></p>
+                        <p><strong>CNIC No: </strong><span id="viewApplicantCnic"></span></p>
+                        <p><strong>Phone No: </strong><span id="viewApplicantPhone"></span></p>
+                        <p><strong>Status: </strong><span id="viewApplicantStatus"></span></p>
+                        <p><strong>Address: </strong><span id="viewApplicantAddress"></span></p>
+                    </div>
+                    <div id="viewGuarantor1">
+                        <h5>Guarantor 1</h5>
+                        <p><strong>Name: </strong><span id="viewGuarantor1Name"></span></p>
+                        <p><strong>CNIC No: </strong><span id="viewGuarantor1Cnic"></span></p>
+                        <p><strong>Phone No: </strong><span id="viewGuarantor1Phone"></span></p>
+                    </div>
+                    <div id="viewGuarantor2">
+                        <h5>Guarantor 2</h5>
+                        <p><strong>Name: </strong><span id="viewGuarantor2Name"></span></p>
+                        <p><strong>CNIC No: </strong><span id="viewGuarantor2Cnic"></span></p>
+                        <p><strong>Phone No: </strong><span id="viewGuarantor2Phone"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="edit-form">
+                            <h5>Applicant</h5>
+                            <div class="form-group">
+                                <label for="editApplicantName">Name</label>
+                                <input type="text" class="form-control" id="editApplicantName" name="editApplicantName">
+                            </div>
+                            <div class="form-group">
+                                <label for="editApplicantCnic">CNIC No</label>
+                                <input type="text" class="form-control" id="editApplicantCnic" name="editApplicantCnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="editApplicantPhone">Phone No</label>
+                                <input type="text" class="form-control" id="editApplicantPhone" name="editApplicantPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="editApplicantStatus">Status</label>
+                                <select class="form-control" id="editApplicantStatus" name="editApplicantStatus">
+                                    <option value="Approved">Approved</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editApplicantAddress">Address</label>
+                                <input type="text" class="form-control" id="editApplicantAddress" name="editApplicantAddress">
+                            </div>
+                        </div>
+                        <div class="edit-form">
+                            <h5>Guarantor 1</h5>
+                            <div class="form-group">
+                                <label for="editGuarantor1Name">Name</label>
+                                <input type="text" class="form-control" id="editGuarantor1Name" name="editGuarantor1Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGuarantor1Cnic">CNIC No</label>
+                                <input type="text" class="form-control" id="editGuarantor1Cnic" name="editGuarantor1Cnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGuarantor1Phone">Phone No</label>
+                                <input type="text" class="form-control" id="editGuarantor1Phone" name="editGuarantor1Phone">
+                            </div>
+                        </div>
+                        <div class="edit-form">
+                            <h5>Guarantor 2</h5>
+                            <div class="form-group">
+                                <label for="editGuarantor2Name">Name</label>
+                                <input type="text" class="form-control" id="editGuarantor2Name" name="editGuarantor2Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGuarantor2Cnic">CNIC No</label>
+                                <input type="text" class="form-control" id="editGuarantor2Cnic" name="editGuarantor2Cnic">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGuarantor2Phone">Phone No</label>
+                                <input type="text" class="form-control" id="editGuarantor2Phone" name="editGuarantor2Phone">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updateProfileButton">Update Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Profile search
+            $('#profile-search').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('.profile-row').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+
+            // View Profile Modal
+            $('#viewProfileModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var profile = button.data('profile');
+                
+                $('#viewApplicantName').text(profile.name);
+                $('#viewApplicantCnic').text(profile.cnic);
+                $('#viewApplicantPhone').text(profile.phone);
+                $('#viewApplicantStatus').text(profile.status);
+                $('#viewApplicantAddress').text(profile.address);
+                $('#viewGuarantor1Name').text(profile.guarantor1.name);
+                $('#viewGuarantor1Cnic').text(profile.guarantor1.cnic);
+                $('#viewGuarantor1Phone').text(profile.guarantor1.phone);
+                $('#viewGuarantor2Name').text(profile.guarantor2.name);
+                $('#viewGuarantor2Cnic').text(profile.guarantor2.cnic);
+                $('#viewGuarantor2Phone').text(profile.guarantor2.phone);
+            });
+
+            // Edit Profile Modal
+            $('#editProfileModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var profile = button.data('profile');
+                
+                $('#editApplicantName').val(profile.name);
+                $('#editApplicantCnic').val(profile.cnic);
+                $('#editApplicantPhone').val(profile.phone);
+                $('#editApplicantStatus').val(profile.status);
+                $('#editApplicantAddress').val(profile.address);
+                $('#editGuarantor1Name').val(profile.guarantor1.name);
+                $('#editGuarantor1Cnic').val(profile.guarantor1.cnic);
+                $('#editGuarantor1Phone').val(profile.guarantor1.phone);
+                $('#editGuarantor2Name').val(profile.guarantor2.name);
+                $('#editGuarantor2Cnic').val(profile.guarantor2.cnic);
+                $('#editGuarantor2Phone').val(profile.guarantor2.phone);
+            });
+
+            // Save Profile
+            $('#saveProfileButton').on('click', function() {
+                // Collect data from form
+                var newProfile = {
+                    name: $('#applicantName').val(),
+                    cnic: $('#applicantCnic').val(),
+                    phone: $('#applicantPhone').val(),
+                    status: $('#applicantStatus').val(),
+                    address: $('#applicantAddress').val(),
+                    guarantor1: {
+                        name: $('#guarantor1Name').val(),
+                        cnic: $('#guarantor1Cnic').val(),
+                        phone: $('#guarantor1Phone').val()
+                    },
+                    guarantor2: {
+                        name: $('#guarantor2Name').val(),
+                        cnic: $('#guarantor2Cnic').val(),
+                        phone: $('#guarantor2Phone').val()
+                    }
+                };
+
+                // Add the new profile to the table
+                var newRow = `
+                    <tr class="profile-row">
+                        <td><a href="#" class="profile-name" data-toggle="modal" data-target="#viewProfileModal" data-profile='${JSON.stringify(newProfile)}'>${newProfile.name}</a></td>
+                        <td>${newProfile.cnic}</td>
+                        <td>${newProfile.phone}</td>
+                        <td>${newProfile.status}</td>
+                        <td>${newProfile.address}</td>
+                        <td>
+                            <button class="btn btn-primary btn-edit-profile" data-toggle="modal" data-target="#editProfileModal" data-profile='${JSON.stringify(newProfile)}'><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger btn-delete-profile" data-profile='${JSON.stringify(newProfile)}'><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+                $('tbody').append(newRow);
+                
+                // Close the modal
+                $('#addProfileModal').modal('hide');
+                
+                // Reset the form
+                $('#addProfileForm')[0].reset();
+            });
+
+            // Update Profile
+            $('#updateProfileButton').on('click', function() {
+                // Collect data from form
+                var updatedProfile = {
+                    name: $('#editApplicantName').val(),
+                    cnic: $('#editApplicantCnic').val(),
+                    phone: $('#editApplicantPhone').val(),
+                    status: $('#editApplicantStatus').val(),
+                    address: $('#editApplicantAddress').val(),
+                    guarantor1: {
+                        name: $('#editGuarantor1Name').val(),
+                        cnic: $('#editGuarantor1Cnic').val(),
+                        phone: $('#editGuarantor1Phone').val()
+                    },
+                    guarantor2: {
+                        name: $('#editGuarantor2Name').val(),
+                        cnic: $('#editGuarantor2Cnic').val(),
+                        phone: $('#editGuarantor2Phone').val()
+                    }
+                };
+
+                // Update the profile in the table
+                var row = $('a.profile-name[data-profile*="' + updatedProfile.cnic + '"]').closest('tr');
+                row.find('.profile-name').text(updatedProfile.name);
+                row.find('td:eq(1)').text(updatedProfile.cnic);
+                row.find('td:eq(2)').text(updatedProfile.phone);
+                row.find('td:eq(3)').text(updatedProfile.status);
+                row.find('td:eq(4)').text(updatedProfile.address);
+                row.find('.btn-edit-profile').data('profile', updatedProfile);
+                row.find('.btn-delete-profile').data('profile', updatedProfile);
+                
+                // Close the modal
+                $('#editProfileModal').modal('hide');
+            });
+			// Approve Profile
+        $(document).on('click', '.btn-approve-profile', function() {
+            var profile = $(this).data('profile');
+            profile.status = 'Approved';
+            
+            // Find the corresponding row in the table and update it
+            var row = $(this).closest('tr');
+            row.find('td:eq(3)').text(profile.status);
+            $(this).remove();
+        });
+
+            // Delete Profile
+            $(document).on('click', '.btn-delete-profile', function() {
+                var profile = $(this).data('profile');
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+</html>

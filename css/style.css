@@ -1,0 +1,184 @@
+body { 
+            background-color: #fff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .popup {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+            position: relative;
+        }
+        .popup h2 {
+            margin-bottom: 20px;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup h2 img {
+            margin-right: 10px;
+        }
+        .btn-primary { 
+            background-color: #ff0000; 
+            border-color: #ff0000; 
+            width: 100%;
+            border-radius: 20px;
+        }
+        .link { 
+            color: #ff0000; 
+            display: inline-block;
+            margin: 5px;
+        }
+        .bottom-link {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .form-group label {
+            text-align: left;
+            display: block;
+        }
+body { 
+            background-color: #fff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 60%;
+            position: relative;
+        }
+        .btn-primary { 
+            background-color: #ff0000; 
+            border-color: #ff0000; 
+            width: 100%;
+            border-radius: 20px;
+        }
+        .btn-secondary {
+            width: 100%;
+            border-radius: 20px;
+        }
+        .form-group label {
+            text-align: left;
+            display: block;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ff0000;
+        }
+body { 
+            background-color: #fff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .popup {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        .popup h2 {
+            margin-bottom: 20px;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .popup h2 img {
+            margin-right: 10px;
+        }
+        .btn-primary { 
+            background-color: #ff0000; 
+            border-color: #ff0000; 
+            width: 100%;
+            border-radius: 20px;
+        }
+        .link { 
+            color: #ff0000; 
+            display: inline-block;
+            margin: 5px;
+        }
+        .bottom-link {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .form-group label {
+            text-align: left;
+            display: block;
+        }
+        .back-arrow {
+            position: absolute;
+            top: calc(50% - 12px); /* Adjust this to vertically center the icon */
+            left: calc(50% - 175px); /* Adjust this to position it outside the popup */
+            font-size: 24px;
+            color: #ff0000;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .back-arrow:hover {
+            color: #cc0000;
+        }
+body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .thank-you-message {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .smiley {
+            font-size: 100px;
+            color: #e02424;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        .btn-primary-custom {
+            background-color: red;
+            border: none;
+            color: white;
+        }

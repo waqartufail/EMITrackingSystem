@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Payment</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+	<link href="css/inventory.css" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">EMI Payment</div>
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span class="menu-item">Dashboard</span></a>
+            <a href="inventory.html"><i class="fas fa-box"></i> <span class="menu-item">Inventory</span></a>
+            <a href="categories.html"><i class="fas fa-tags"></i> <span class="menu-item">Categories</span></a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> <span class="menu-item">Cart</span></a>
+            <a href="#" class="active"><i class="fas fa-chart-line"></i> <span class="menu-item">Sales</span></a>
+            <a href="profile.html"><i class="fas fa-user"></i> <span class="menu-item">Profile</span></a>
+        </div>
+        <div>
+            <a href="inventory.html"><i class="fas fa-plus"></i> <span class="menu-item">Add Item</span></a>
+            <a href="thankyou.html"><i class="fas fa-sign-out-alt"></i> <span class="menu-item">Sign Out</span></a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <a href="dashboard.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+            <div class="search-bar">
+                <input type="text" id="emi-search" placeholder="Search Applicant">
+            </div>
+            <div class="user-info">
+                <button class="btn btn-primary-custom btn-custom" data-toggle="modal" data-target="#addPaymentModal">Add Payment</button>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-envelope"></i>
+                <img src="https://via.placeholder.com/40" alt="User">
+            </div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">EMI Payments</div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Applicant Name</th>
+                                <th>Product Total Amount</th>
+                                <th>Advance Paid</th>
+                                <th>Installments Paid</th>
+                                <th>Current Installment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example row, repeat as necessary -->
+                            <tr>
+                                <td><a href="#" class="applicant-name">John Doe</a></td>
+                                <td>$1000</td>
+                                <td>$200</td>
+                                <td>$500</td>
+                                <td>$50</td>
+                                <td>Due</td>
+                                <td>
+                                    <button class="btn btn-success btn-mark-paid">Paid</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7">
+                                    <div class="table-footer">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Payment Modal -->
+    <div class="modal fade" id="addPaymentModal" tabindex="-1" aria-labelledby="addPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPaymentModalLabel">Add Payment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-form">
+                        <div class="form-group">
+                            <label for="applicantName">Applicant Name</label>
+                            <input type="text" class="form-control" id="applicantName" placeholder="Enter applicant name">
+                        </div>
+                        <div class="form-group">
+                            <label for="productAmount">Product Total Amount</label>
+                            <input type="text" class="form-control" id="productAmount" placeholder="Enter product total amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="advancePaid">Advance Paid</label>
+                            <input type="text" class="form-control" id="advancePaid" placeholder="Enter advance paid">
+                        </div>
+                        <div class="form-group">
+                            <label for="installmentsPaid">Installments Paid</label>
+                            <input type="text" class="form-control" id="installmentsPaid" placeholder="Enter sum of all installments paid">
+                        </div>
+                        <div class="form-group">
+                            <label for="currentInstallment">Current Installment</label>
+                            <input type="text" class="form-control" id="currentInstallment" placeholder="Enter current installment">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status">
+                                <option value="due">Due</option>
+                                <option value="paid">Paid</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom btn-custom">Add Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Applicant Details Modal -->
+    <div class="modal fade" id="applicantDetailsModal" tabindex="-1" aria-labelledby="applicantDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="applicantDetailsModalLabel">EMI Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content for the modal displaying all payment details -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Applicant Name: <span id="modalApplicantName"></span></h6>
+                            <p>Product Total Amount: <span id="modalProductAmount"></span></p>
+                            <p>Advance Paid: <span id="modalAdvancePaid"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Sum of All Installments Paid: <span id="modalInstallmentsPaid"></span></p>
+                            <p>Current Installment: <span id="modalCurrentInstallment"></span></p>
+                            <p>Status: <span id="modalStatus"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-custom btn-custom" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event listener for applicant name links to open modal with details
+            $('.applicant-name').click(function(event) {
+                event.preventDefault();
+                var row = $(this).closest('tr');
+                $('#modalApplicantName').text(row.find('td:nth-child(1)').text());
+                $('#modalProductAmount').text(row.find('td:nth-child(2)').text());
+                $('#modalAdvancePaid').text(row.find('td:nth-child(3)').text());
+                $('#modalInstallmentsPaid').text(row.find('td:nth-child(4)').text());
+                $('#modalCurrentInstallment').text(row.find('td:nth-child(5)').text());
+                $('#modalStatus').text(row.find('td:nth-child(6)').text());
+                $('#applicantDetailsModal').modal('show');
+            });
+
+            // Event listener for Mark as Paid button
+            $('.btn-mark-paid').click(function() {
+                $(this).closest('tr').find('td:nth-child(6)').text('Paid');
+                $(this).remove();
+            });
+        });
+    </script>
+</body>
+</html>
