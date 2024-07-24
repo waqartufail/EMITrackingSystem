@@ -168,3 +168,29 @@ body {
         .filters .form-control {
             border-radius: 20px;
         }
+/* Responsive styles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .table {
+        font-size: 12px;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+    .table {
+        font-size: 14px;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
